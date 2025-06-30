@@ -4,23 +4,78 @@
 
 /* File: app/globals.css */
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Core palette */
+  --color-bg: #ffffff;
+  --color-fg: #000000;
+
+  /* Semantic extras (optional) */
+  --color-accent: #1e40af;
+  --color-muted: #6b7280;
+
+  /* Typography */
   --font-sans: Arial, Helvetica, sans-serif;
   --font-mono: 'Courier New', Courier, monospace;
+
+  /* Utility */
+  --transition-base: background-color 0.2s ease, color 0.2s ease;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --color-bg: #0a0a0a;
+    --color-fg: #ededed;
+    --color-muted: #9ca3af;
   }
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: var(--transition-base);
+}
+
+/* Headings inherit font and color for easy theming */
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  margin-top: 0;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+a:hover,
+a:focus {
+  color: shade(var(--color-accent), 20%);
+}
+
+/* Code blocks & monospace */
+code, pre {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+}
+
+/* Utility: muted text */
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
 }

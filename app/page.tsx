@@ -2,8 +2,8 @@
 'use client';
 
 import { useState } from 'react';
-import ChatPanel from '../components/ChatPanel';      // default export
-import GraphScene from '../components/GraphScene';    // make sure this is also default
+import ChatPanel from '../components/ChatPanel';
+import GraphScene from '../components/GraphScene';
 
 export interface GraphData {
   nodes: { id: string }[];
